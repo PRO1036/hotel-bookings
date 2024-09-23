@@ -1,0 +1,158 @@
+---
+title: "Hotel bookings"
+author: "Mine Çetinkaya-Rundel"
+format: html
+---
+
+## Set up
+
+On charge les packages
+
+```{r}
+#| label: load-packages
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(skimr)
+```
+
+On va télécharger les données:
+
+```{r}
+#| label: load-data
+#| message: false
+
+# From TidyTuesday: https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-02-11/readme.md
+hotels <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
+```
+
+## Exercices
+
+### Exercice 1
+
+Pour s'échauffer, jetez un coup d'oeil aux données à l'aide de la fonction `skim()`.
+
+:::{.callout-note}
+Notez que la liste des différentes variables et de leur signification est disponible sur le repo du [TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-02-11/readme.md)
+:::
+
+```{r}
+#| label: hotels-skim
+
+skim(hotels)
+```
+
+### Exercice 2
+
+Est-ce que les gens travaillent sur un coup de tête? Regardons ça...
+
+Complétez le code pour filtrer les réservations où le client *n'est pas* américain (`country` code `"USA"`) et où le `lead_time` est de moins d'une journée.
+
+**Note:** Dans le bloc de code suivant, il faudra indiquer `eval=TRUE` quand vous aurez compléter les lignes.
+
+```{r}
+#| label: travel-whim
+#| eval: false
+
+hotels %>%
+  filter(
+    country ____ "USA", 
+    lead_time ____ ____
+    )
+```
+
+### Exercice 3
+
+Combien de réservation concernent au moins un enfant **ou** un bébé ?
+
+Dans le bloc suivant, remplacez:
+
+-   `[AU MOINS]` par l'opérateur logique correspondant
+-   `[OU]` par l'opérateur logique correspondant
+
+**Note:** N'oubliez pas d'indiquer `eval=TRUE`
+
+```{r}
+#| label: some-children
+#| eval: false
+
+hotels %>%
+  filter(
+    children [AT LEAST] 1 [OR] babies [AT LEAST] 1
+    )
+```
+
+### Exercice 4
+
+Est-ce que vous pensez qu'il est plus probable de trouver des réservations avec des enfants ou des bébés en ville ou bien dans les resorts ? 
+
+Pour vérifier ça, utilisez la fonction `filter()` pour sélectionner les réservations avec au moins un enfant ou un bébé dans les villes. Faites la même chose pour les réservations dans les resorts et comparez le nombre de lignes obtenues.
+
+
+```{r}
+#| label: resort-children
+
+# add code here
+# pay attention to correctness and code style
+```
+
+```{r}
+#| label: city-children
+
+# ajoutez votre code ici
+```
+
+### Exercice 5
+
+Calculez la fréquence d'apparition du nombre d'`adults` dans un réservation. Affichez le résultat en ordre décroissant de tel sorte que l'observation la plus fréquente arrive en haut.
+
+Quel est le nombre d'adulte le plus fréquent dans les réservations ? Y-a-t'il des résultats surprenant ?
+
+**Note:** C'est une bonne pratique de nommer les blocs de code (`nommez-moi-1`). Essayez de trouver pour chaque bloc un nom court et informatif. Le label ne doit pas contenir d'espaces et doit être unique dans le fichier (sinon il y aura une erreur).
+
+```{r}
+#| label: nommez-moi-1
+
+# ajoutez votre code ici
+```
+
+### Exercice 6
+
+Faite la même chose que dans l'exercice 5, mais cette fois en ajoutant les réservations annulées (`is_canceled` = 1) ou non (`is_canceled` = 0).
+
+Qu'est ce que cela nous apprend sur les résultats obtenus à l'exercice 5 ?
+
+**Note:** N'oubliez pas de renommer le bloc de code.
+
+```{r}
+#| label: nommez-moi-2
+
+# ajoutez votre code ici
+```
+
+### Exercice 7
+
+Calculez le minimum, la moyenne, la médiane et le maximum du taux de réservation quotidien (`adr`), groupé par le type d'hôtel (`hotel`) de telle sorte à avoir ces statistiques pour les hôtels de ville et les resorts.
+
+Lequel a le plus au taux en moyenne ?
+
+```{r}
+#| label: nommez-moi-3
+
+# ajoutez votre code ici
+```
+
+### Exercice 8
+
+Dans l'exercice précédent, nous observons deux valeurs inhabituelles dans les statistiques -- un minimum négatif et un très haut maximum. Quel type d'hotel cela concerne-t-il ? Trouvez ces observations dans le dataset et déterminez la date d'arrivée (mois et année), ainsi que le nombre de personnes (adultes, enfants et bébés) qui ont séjourné à l'hôtel. 
+
+**Hint:** Vous pouvez par exemple utiliser `filter` sur la variable `adr` et utiliser `select` pour ne garder que les colonnes qui vous intéressent.
+
+```{r}
+#| label: nommez-moi-4
+
+# ajoutez votre code ici
+```
+
+
