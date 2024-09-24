@@ -17,6 +17,10 @@ library(tidyverse)
 library(skimr)
 ```
 
+:::{.callout-warning}
+Il faudra peut être installer les packages `skimr` si vous ne les avez pas déjà. Vous pouvez le faire en exécutant `install.packages("skimr")` dans votre console.
+:::
+
 On va télécharger les données:
 
 ```{r}
